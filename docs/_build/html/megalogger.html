@@ -1,0 +1,737 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+
+    <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+        <title>megalogger package - MegaLogger 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: black;
+  --color-brand-content: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: white;
+  --color-brand-content: white;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: white;
+  --color-brand-content: white;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">MegaLogger 1.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">MegaLogger 1.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="megalogger-package">
+<h1>megalogger package<a class="headerlink" href="#megalogger-package" title="Link to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-abstract_logger">
+<span id="megalogger-abstract-logger-module"></span><h2>megalogger.abstract_logger module<a class="headerlink" href="#module-abstract_logger" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="abstract_logger.AbstractDelayed">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">abstract_logger.</span></span><span class="sig-name descname"><span class="pre">AbstractDelayed</span></span><a class="reference internal" href="_modules/abstract_logger.html#AbstractDelayed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abstract_logger.AbstractDelayed" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#abstract_logger.AbstractLogger" title="abstract_logger.AbstractLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractLogger</span></code></a></p>
+<p>Subclass of AbstractLogger of when the abstract class gives the result
+only at the end using yield_results</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="abstract_logger.AbstractDelayed.log_item">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">log_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/abstract_logger.html#AbstractDelayed.log_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abstract_logger.AbstractDelayed.log_item" title="Link to this definition">#</a></dt>
+<dd><p>Log method (abstract) delayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> – item to log about</p></li>
+<li><p><strong>message</strong> – message to print</p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="abstract_logger.AbstractDelayed.yield_results">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">yield_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_elements_arguments</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/abstract_logger.html#AbstractDelayed.yield_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abstract_logger.AbstractDelayed.yield_results" title="Link to this definition">#</a></dt>
+<dd><p>This method is how the user wants to see the log file.</p>
+<p>See also blueprints.py that contains examples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_elements_arguments</strong> – Parameters for the method</p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="abstract_logger.AbstractInstant">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">abstract_logger.</span></span><span class="sig-name descname"><span class="pre">AbstractInstant</span></span><a class="reference internal" href="_modules/abstract_logger.html#AbstractInstant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abstract_logger.AbstractInstant" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#abstract_logger.AbstractLogger" title="abstract_logger.AbstractLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractLogger</span></code></a></p>
+<dl class="simple">
+<dt>Subclass of AbstractLogger of when the abstract class that gives</dt><dd><p>the result immediately</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="abstract_logger.AbstractInstant.log_item">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">log_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/abstract_logger.html#AbstractInstant.log_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abstract_logger.AbstractInstant.log_item" title="Link to this definition">#</a></dt>
+<dd><p>Log method (abstract) instant</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> – item to log about</p></li>
+<li><p><strong>message</strong> – message to print</p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>something to yield about (since it is instant)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="abstract_logger.AbstractLogger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">abstract_logger.</span></span><span class="sig-name descname"><span class="pre">AbstractLogger</span></span><a class="reference internal" href="_modules/abstract_logger.html#AbstractLogger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abstract_logger.AbstractLogger" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract object that represents a logger.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="abstract_logger.AbstractLogger.log_item">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">log_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/abstract_logger.html#AbstractLogger.log_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#abstract_logger.AbstractLogger.log_item" title="Link to this definition">#</a></dt>
+<dd><p>Log method (abstract)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> – item to log about</p></li>
+<li><p><strong>message</strong> – message to print</p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="megalogger-blueprints-module">
+<h2>megalogger.blueprints module<a class="headerlink" href="#megalogger-blueprints-module" title="Link to this heading">#</a></h2>
+<p>This submodule gives various examples of implementation of handlers.</p>
+<dl class="py class" id="module-blueprints">
+<dt class="sig sig-object py" id="blueprints.DelayedStreamLoggerBlueprint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">blueprints.</span></span><span class="sig-name descname"><span class="pre">DelayedStreamLoggerBlueprint</span></span><a class="reference internal" href="_modules/blueprints.html#DelayedStreamLoggerBlueprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.DelayedStreamLoggerBlueprint" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#abstract_logger.AbstractDelayed" title="abstract_logger.AbstractDelayed"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractDelayed</span></code></a></p>
+<p>Blueprint for a log as the form of a string dump in a text file</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="blueprints.DelayedStreamLoggerBlueprint.log_item">
+<span class="sig-name descname"><span class="pre">log_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/blueprints.html#DelayedStreamLoggerBlueprint.log_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.DelayedStreamLoggerBlueprint.log_item" title="Link to this definition">#</a></dt>
+<dd><p>Log method (abstract) delayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> – item to log about</p></li>
+<li><p><strong>message</strong> – message to print</p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="blueprints.DelayedStreamLoggerBlueprint.yield_results">
+<span class="sig-name descname"><span class="pre">yield_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_elements_arguments</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/blueprints.html#DelayedStreamLoggerBlueprint.yield_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.DelayedStreamLoggerBlueprint.yield_results" title="Link to this definition">#</a></dt>
+<dd><p>Pandas export to a text file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dict_elements_arguments</strong> – Contains in key “OUTPUT_FILE”
+the output file location.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="blueprints.InstantStreamLoggerBlueprint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">blueprints.</span></span><span class="sig-name descname"><span class="pre">InstantStreamLoggerBlueprint</span></span><a class="reference internal" href="_modules/blueprints.html#InstantStreamLoggerBlueprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.InstantStreamLoggerBlueprint" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#abstract_logger.AbstractInstant" title="abstract_logger.AbstractInstant"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractInstant</span></code></a></p>
+<p>Blueprint for a log as the form of an instant dump in a text file</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="blueprints.InstantStreamLoggerBlueprint.log_item">
+<span class="sig-name descname"><span class="pre">log_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints.html#InstantStreamLoggerBlueprint.log_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.InstantStreamLoggerBlueprint.log_item" title="Link to this definition">#</a></dt>
+<dd><p>Basic implementation of the instant dump to file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> – </p></li>
+<li><p><strong>message</strong> – </p></li>
+<li><p><strong>kwargs</strong> – Must contain the key “FILE_LOCATION”</p></li>
+</ul>
+</dd>
+</dl>
+<p>output file location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string of log</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="blueprints.PandasExcelLoggerBlueprint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">blueprints.</span></span><span class="sig-name descname"><span class="pre">PandasExcelLoggerBlueprint</span></span><a class="reference internal" href="_modules/blueprints.html#PandasExcelLoggerBlueprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.PandasExcelLoggerBlueprint" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#abstract_logger.AbstractDelayed" title="abstract_logger.AbstractDelayed"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractDelayed</span></code></a></p>
+<p>Blueprint for a log as the form of a Excel format
+using pandas and openpyxl</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="blueprints.PandasExcelLoggerBlueprint.log_item">
+<span class="sig-name descname"><span class="pre">log_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/blueprints.html#PandasExcelLoggerBlueprint.log_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.PandasExcelLoggerBlueprint.log_item" title="Link to this definition">#</a></dt>
+<dd><p>Log method (abstract) delayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> – item to log about</p></li>
+<li><p><strong>message</strong> – message to print</p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="blueprints.PandasExcelLoggerBlueprint.yield_results">
+<span class="sig-name descname"><span class="pre">yield_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_elements_arguments</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/blueprints.html#PandasExcelLoggerBlueprint.yield_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.PandasExcelLoggerBlueprint.yield_results" title="Link to this definition">#</a></dt>
+<dd><p>Pandas export to Excel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dict_elements_arguments</strong> – Contains in key “PANDAS_COLUMNS”</p>
+</dd>
+</dl>
+<p>the columns to use for pd.DataFrame.from_records and in key
+“EXCEL_LOCATION” the Excel location.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="blueprints.PandasODSLoggerBlueprint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">blueprints.</span></span><span class="sig-name descname"><span class="pre">PandasODSLoggerBlueprint</span></span><a class="reference internal" href="_modules/blueprints.html#PandasODSLoggerBlueprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.PandasODSLoggerBlueprint" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#abstract_logger.AbstractDelayed" title="abstract_logger.AbstractDelayed"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractDelayed</span></code></a></p>
+<p>Blueprint for a log as the form of a ODS format
+using pandas</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="blueprints.PandasODSLoggerBlueprint.log_item">
+<span class="sig-name descname"><span class="pre">log_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/blueprints.html#PandasODSLoggerBlueprint.log_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.PandasODSLoggerBlueprint.log_item" title="Link to this definition">#</a></dt>
+<dd><p>Log method (abstract) delayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> – item to log about</p></li>
+<li><p><strong>message</strong> – message to print</p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="blueprints.PandasODSLoggerBlueprint.yield_results">
+<span class="sig-name descname"><span class="pre">yield_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_elements_arguments</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/blueprints.html#PandasODSLoggerBlueprint.yield_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.PandasODSLoggerBlueprint.yield_results" title="Link to this definition">#</a></dt>
+<dd><p>Pandas export to ODS</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dict_elements_arguments</strong> – Contains in key “PANDAS_COLUMNS”</p>
+</dd>
+</dl>
+<p>the columns to use for pd.DataFrame.from_records and in key
+“ODS_LOCATION” the ODS location.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="blueprints.PandasSQLLoggerBlueprint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">blueprints.</span></span><span class="sig-name descname"><span class="pre">PandasSQLLoggerBlueprint</span></span><a class="reference internal" href="_modules/blueprints.html#PandasSQLLoggerBlueprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.PandasSQLLoggerBlueprint" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#abstract_logger.AbstractDelayed" title="abstract_logger.AbstractDelayed"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractDelayed</span></code></a></p>
+<p>Blueprint for a log as the form of a SQL Table using pandas</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="blueprints.PandasSQLLoggerBlueprint.log_item">
+<span class="sig-name descname"><span class="pre">log_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/blueprints.html#PandasSQLLoggerBlueprint.log_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.PandasSQLLoggerBlueprint.log_item" title="Link to this definition">#</a></dt>
+<dd><p>Log method (abstract) delayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> – item to log about</p></li>
+<li><p><strong>message</strong> – message to print</p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="blueprints.PandasSQLLoggerBlueprint.yield_results">
+<span class="sig-name descname"><span class="pre">yield_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_elements_arguments</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/blueprints.html#PandasSQLLoggerBlueprint.yield_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blueprints.PandasSQLLoggerBlueprint.yield_results" title="Link to this definition">#</a></dt>
+<dd><p>Pandas export to SQL.
+By default, the behaviour when the path/table already exists
+is to append, but this can be modified internally.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dict_elements_arguments</strong> – Contains in key “PANDAS_COLUMNS”</p>
+</dd>
+</dl>
+<p>the columns to use for pd.DataFrame.from_records, in key
+“SQL_FILE” the SQL file and in “SQL_TABLE” the table name.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-megalogged">
+<span id="megalogger-megalogged-module"></span><h2>megalogger.megalogged module<a class="headerlink" href="#module-megalogged" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="megalogged.MegaLoggedItem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">megalogged.</span></span><span class="sig-name descname"><span class="pre">MegaLoggedItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/megalogged.html#MegaLoggedItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#megalogged.MegaLoggedItem" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Master item that represents an object to be logged</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="megalogged.MegaLoggedItemString">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">megalogged.</span></span><span class="sig-name descname"><span class="pre">MegaLoggedItemString</span></span><a class="reference internal" href="_modules/megalogged.html#MegaLoggedItemString"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#megalogged.MegaLoggedItemString" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#megalogged.MegaLoggedItem" title="megalogged.MegaLoggedItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">MegaLoggedItem</span></code></a></p>
+<p>Subclass of MegaLoggedItem that implements to_string</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="megalogged.MegaLoggedItemString.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/megalogged.html#MegaLoggedItemString.to_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#megalogged.MegaLoggedItemString.to_string" title="Link to this definition">#</a></dt>
+<dd><p>Returns the element as a string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="megalogged.MegaLoggedItemTuple">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">megalogged.</span></span><span class="sig-name descname"><span class="pre">MegaLoggedItemTuple</span></span><a class="reference internal" href="_modules/megalogged.html#MegaLoggedItemTuple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#megalogged.MegaLoggedItemTuple" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#megalogged.MegaLoggedItem" title="megalogged.MegaLoggedItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">MegaLoggedItem</span></code></a></p>
+<p>Subclass of MegaLoggedItem that implements to_tuple</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="megalogged.MegaLoggedItemTuple.to_tuple">
+<span class="sig-name descname"><span class="pre">to_tuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/megalogged.html#MegaLoggedItemTuple.to_tuple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#megalogged.MegaLoggedItemTuple.to_tuple" title="Link to this definition">#</a></dt>
+<dd><p>Returns the element as a tuple of any length</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a list of tuples (of any length)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="megalogger-megalogger-module">
+<h2>megalogger.megalogger module<a class="headerlink" href="#megalogger-megalogger-module" title="Link to this heading">#</a></h2>
+<p>This submodule gives various examples of implementation of loggers.</p>
+<dl class="py class" id="module-megalogging">
+<dt class="sig sig-object py" id="megalogging.MegaLogger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">megalogging.</span></span><span class="sig-name descname"><span class="pre">MegaLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">check_abstract_base_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_yield</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/megalogging.html#MegaLogger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#megalogging.MegaLogger" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>MegaLogger class</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="megalogging.MegaLogger.add_delayed_handlers">
+<span class="sig-name descname"><span class="pre">add_delayed_handlers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#abstract_logger.AbstractDelayed" title="abstract_logger.AbstractDelayed"><span class="pre">AbstractDelayed</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/megalogging.html#MegaLogger.add_delayed_handlers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#megalogging.MegaLogger.add_delayed_handlers" title="Link to this definition">#</a></dt>
+<dd><p>Add a handler to the list of delayed handler list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handler</strong> – Handler</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="megalogging.MegaLogger.add_instant_handlers">
+<span class="sig-name descname"><span class="pre">add_instant_handlers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#abstract_logger.AbstractInstant" title="abstract_logger.AbstractInstant"><span class="pre">AbstractInstant</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/megalogging.html#MegaLogger.add_instant_handlers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#megalogging.MegaLogger.add_instant_handlers" title="Link to this definition">#</a></dt>
+<dd><p>Add a handler to the list of instant handler list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handler</strong> – Handler</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="megalogging.MegaLogger.add_item">
+<span class="sig-name descname"><span class="pre">add_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_logged</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#megalogged.MegaLoggedItem" title="megalogged.MegaLoggedItem"><span class="pre">MegaLoggedItem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/megalogging.html#MegaLogger.add_item"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#megalogging.MegaLogger.add_item" title="Link to this definition">#</a></dt>
+<dd><p>Add the item item_logged with the message argument message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item_logged</strong> – Item to log (must be a subclass of MegaLoggedItem)</p></li>
+<li><p><strong>message</strong> – text</p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="megalogging.MegaLogger.add_item_lists">
+<span class="sig-name descname"><span class="pre">add_item_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#megalogged.MegaLoggedItem" title="megalogged.MegaLoggedItem"><span class="pre">MegaLoggedItem</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/megalogging.html#MegaLogger.add_item_lists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#megalogging.MegaLogger.add_item_lists" title="Link to this definition">#</a></dt>
+<dd><p>Same as add_item, but with a list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_items</strong> – List of items (subclass of MegaLoggedItem)</p></li>
+<li><p><strong>message</strong> – string</p></li>
+<li><p><strong>kwargs</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="megalogging.MegaLogger.add_item_tuple">
+<span class="sig-name descname"><span class="pre">add_item_tuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_items_tuple</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#megalogged.MegaLoggedItem" title="megalogged.MegaLoggedItem"><span class="pre">MegaLoggedItem</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/megalogging.html#MegaLogger.add_item_tuple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#megalogging.MegaLogger.add_item_tuple" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="megalogging.MegaLogger.yield_results">
+<span class="sig-name descname"><span class="pre">yield_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/megalogging.html#MegaLogger.yield_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#megalogging.MegaLogger.yield_results" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Alexandre Delaisement
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">megalogger package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-abstract_logger">megalogger.abstract_logger module</a><ul>
+<li><a class="reference internal" href="#abstract_logger.AbstractDelayed"><code class="docutils literal notranslate"><span class="pre">AbstractDelayed</span></code></a><ul>
+<li><a class="reference internal" href="#abstract_logger.AbstractDelayed.log_item"><code class="docutils literal notranslate"><span class="pre">AbstractDelayed.log_item()</span></code></a></li>
+<li><a class="reference internal" href="#abstract_logger.AbstractDelayed.yield_results"><code class="docutils literal notranslate"><span class="pre">AbstractDelayed.yield_results()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#abstract_logger.AbstractInstant"><code class="docutils literal notranslate"><span class="pre">AbstractInstant</span></code></a><ul>
+<li><a class="reference internal" href="#abstract_logger.AbstractInstant.log_item"><code class="docutils literal notranslate"><span class="pre">AbstractInstant.log_item()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#abstract_logger.AbstractLogger"><code class="docutils literal notranslate"><span class="pre">AbstractLogger</span></code></a><ul>
+<li><a class="reference internal" href="#abstract_logger.AbstractLogger.log_item"><code class="docutils literal notranslate"><span class="pre">AbstractLogger.log_item()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#megalogger-blueprints-module">megalogger.blueprints module</a><ul>
+<li><a class="reference internal" href="#blueprints.DelayedStreamLoggerBlueprint"><code class="docutils literal notranslate"><span class="pre">DelayedStreamLoggerBlueprint</span></code></a><ul>
+<li><a class="reference internal" href="#blueprints.DelayedStreamLoggerBlueprint.log_item"><code class="docutils literal notranslate"><span class="pre">DelayedStreamLoggerBlueprint.log_item()</span></code></a></li>
+<li><a class="reference internal" href="#blueprints.DelayedStreamLoggerBlueprint.yield_results"><code class="docutils literal notranslate"><span class="pre">DelayedStreamLoggerBlueprint.yield_results()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#blueprints.InstantStreamLoggerBlueprint"><code class="docutils literal notranslate"><span class="pre">InstantStreamLoggerBlueprint</span></code></a><ul>
+<li><a class="reference internal" href="#blueprints.InstantStreamLoggerBlueprint.log_item"><code class="docutils literal notranslate"><span class="pre">InstantStreamLoggerBlueprint.log_item()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#blueprints.PandasExcelLoggerBlueprint"><code class="docutils literal notranslate"><span class="pre">PandasExcelLoggerBlueprint</span></code></a><ul>
+<li><a class="reference internal" href="#blueprints.PandasExcelLoggerBlueprint.log_item"><code class="docutils literal notranslate"><span class="pre">PandasExcelLoggerBlueprint.log_item()</span></code></a></li>
+<li><a class="reference internal" href="#blueprints.PandasExcelLoggerBlueprint.yield_results"><code class="docutils literal notranslate"><span class="pre">PandasExcelLoggerBlueprint.yield_results()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#blueprints.PandasODSLoggerBlueprint"><code class="docutils literal notranslate"><span class="pre">PandasODSLoggerBlueprint</span></code></a><ul>
+<li><a class="reference internal" href="#blueprints.PandasODSLoggerBlueprint.log_item"><code class="docutils literal notranslate"><span class="pre">PandasODSLoggerBlueprint.log_item()</span></code></a></li>
+<li><a class="reference internal" href="#blueprints.PandasODSLoggerBlueprint.yield_results"><code class="docutils literal notranslate"><span class="pre">PandasODSLoggerBlueprint.yield_results()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#blueprints.PandasSQLLoggerBlueprint"><code class="docutils literal notranslate"><span class="pre">PandasSQLLoggerBlueprint</span></code></a><ul>
+<li><a class="reference internal" href="#blueprints.PandasSQLLoggerBlueprint.log_item"><code class="docutils literal notranslate"><span class="pre">PandasSQLLoggerBlueprint.log_item()</span></code></a></li>
+<li><a class="reference internal" href="#blueprints.PandasSQLLoggerBlueprint.yield_results"><code class="docutils literal notranslate"><span class="pre">PandasSQLLoggerBlueprint.yield_results()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-megalogged">megalogger.megalogged module</a><ul>
+<li><a class="reference internal" href="#megalogged.MegaLoggedItem"><code class="docutils literal notranslate"><span class="pre">MegaLoggedItem</span></code></a></li>
+<li><a class="reference internal" href="#megalogged.MegaLoggedItemString"><code class="docutils literal notranslate"><span class="pre">MegaLoggedItemString</span></code></a><ul>
+<li><a class="reference internal" href="#megalogged.MegaLoggedItemString.to_string"><code class="docutils literal notranslate"><span class="pre">MegaLoggedItemString.to_string()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#megalogged.MegaLoggedItemTuple"><code class="docutils literal notranslate"><span class="pre">MegaLoggedItemTuple</span></code></a><ul>
+<li><a class="reference internal" href="#megalogged.MegaLoggedItemTuple.to_tuple"><code class="docutils literal notranslate"><span class="pre">MegaLoggedItemTuple.to_tuple()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#megalogger-megalogger-module">megalogger.megalogger module</a><ul>
+<li><a class="reference internal" href="#megalogging.MegaLogger"><code class="docutils literal notranslate"><span class="pre">MegaLogger</span></code></a><ul>
+<li><a class="reference internal" href="#megalogging.MegaLogger.add_delayed_handlers"><code class="docutils literal notranslate"><span class="pre">MegaLogger.add_delayed_handlers()</span></code></a></li>
+<li><a class="reference internal" href="#megalogging.MegaLogger.add_instant_handlers"><code class="docutils literal notranslate"><span class="pre">MegaLogger.add_instant_handlers()</span></code></a></li>
+<li><a class="reference internal" href="#megalogging.MegaLogger.add_item"><code class="docutils literal notranslate"><span class="pre">MegaLogger.add_item()</span></code></a></li>
+<li><a class="reference internal" href="#megalogging.MegaLogger.add_item_lists"><code class="docutils literal notranslate"><span class="pre">MegaLogger.add_item_lists()</span></code></a></li>
+<li><a class="reference internal" href="#megalogging.MegaLogger.add_item_tuple"><code class="docutils literal notranslate"><span class="pre">MegaLogger.add_item_tuple()</span></code></a></li>
+<li><a class="reference internal" href="#megalogging.MegaLogger.yield_results"><code class="docutils literal notranslate"><span class="pre">MegaLogger.yield_results()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    </body>
+</html>

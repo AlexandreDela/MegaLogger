@@ -1,0 +1,9 @@
+*.xlsx
+*.txt
+*.sql
+*.bdd
+*.ods
+*__pycache__*
+*idea/*
+misc.xml
+workspace.xml
