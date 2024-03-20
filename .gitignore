@@ -7,3 +7,7 @@
 *idea/*
 misc.xml
 workspace.xml
+.pyirc
+dist/
+build/
+megalogger.egg-info/
