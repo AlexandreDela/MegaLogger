@@ -1,7 +1,7 @@
 import typing
 import sqlite3
 import pandas as pd
-from . import AbstractLogger, AbstractDelayed, AbstractInstant
+from megalogger.abstract_logger import AbstractLogger, AbstractDelayed, AbstractInstant
 
 
 class PandasExcelLoggerBlueprint(AbstractDelayed):
@@ -55,7 +55,7 @@ class PandasODSLoggerBlueprint(AbstractDelayed):
             self.internal_list_tuple,
             columns=dict_elements_arguments["PANDAS_COLUMNS"],
         )
-        with pd.ExcelWriter(
+        with pd.ExcelWriter( # pylint: disable=abstract-class-instantiated
             dict_elements_arguments["ODS_LOCATION"], engine="odf"
         ) as odf_writer:
             df.to_excel(odf_writer)

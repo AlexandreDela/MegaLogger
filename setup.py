@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='megalogger',
-    version='0.6.2',
+    version='0.6.3',
     author='Alexandre Delaisement',
     author_email='',
     description='A module dedicated to system engineering for object-oriented'

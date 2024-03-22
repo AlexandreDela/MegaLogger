@@ -1,6 +1,6 @@
 import typing
-import abstract_logger
-from megalogged import MegaLoggedItem
+import megalogger.abstract_logger as abstract_logger
+from megalogger.megalogged import MegaLoggedItem
 
 class MegaLogger:
     """
